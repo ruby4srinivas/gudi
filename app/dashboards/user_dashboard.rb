@@ -26,6 +26,8 @@ class UserDashboard < Administrate::BaseDashboard
     confirmed_at: Field::DateTime,
     confirmation_sent_at: Field::DateTime,
     unconfirmed_email: Field::String,
+    password: PasswordField,
+    password_confirmation: PasswordField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -36,8 +38,8 @@ class UserDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :email,
-    :encrypted_password,
-    :reset_password_token,
+    # :encrypted_password,
+    # :reset_password_token,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -68,20 +70,22 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :email,
-    :encrypted_password,
-    :reset_password_token,
-    :reset_password_sent_at,
-    :remember_created_at,
-    :sign_in_count,
-    :current_sign_in_at,
-    :last_sign_in_at,
-    :current_sign_in_ip,
-    :last_sign_in_ip,
-    :name,
-    :confirmation_token,
-    :confirmed_at,
-    :confirmation_sent_at,
-    :unconfirmed_email,
+    :password,
+    :password_confirmation,
+    # :encrypted_password,
+    # :reset_password_token,
+    # :reset_password_sent_at,
+    # :remember_created_at,
+    # :sign_in_count,
+    # :current_sign_in_at,
+    # :last_sign_in_at,
+    # :current_sign_in_ip,
+    # :last_sign_in_ip,
+    :name
+    # :confirmation_token,
+    # :confirmed_at,
+    # :confirmation_sent_at,
+    # :unconfirmed_email,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

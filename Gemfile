@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'paperclip', '~> 4.2.0'
-gem 'dropzonejs-rails', '~> 0.4.16'
+#gem 'dropzonejs-rails', '~> 0.4.16'
 gem 'best_in_place', '~> 3.0.1'
 gem 'ckeditor'
 group :development, :test do

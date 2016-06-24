@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  #get 'uploads/new'
+    resources :uploads
+  end
+
    get 'profiles/index', to: 'profiles#index'
    get '/profiles/:id', to: 'profiles#show', as: 'profiles'
   #resources :profiles, only:[:show, :index]
@@ -13,4 +18,5 @@ Rails.application.routes.draw do
   root to: 'profiles#index'
   devise_for :users
   resources :users
-end
+  
+  end

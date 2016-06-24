@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621060028) do
+ActiveRecord::Schema.define(version: 20160624100623) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "country_name", limit: 255
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 20160621060028) do
     t.datetime "updated_at",                    null: false
   end
 
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.integer  "profile_id",         limit: 4
+  end
+
+  add_index "uploads", ["profile_id"], name: "index_uploads_on_profile_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -110,4 +122,5 @@ ActiveRecord::Schema.define(version: 20160621060028) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "uploads", "profiles"
 end
