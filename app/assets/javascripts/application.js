@@ -10,8 +10,23 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
 //= require jquery
+//= require jquery-ui
+//= require jquery.modal
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap-sprockets
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dropzone
+//= require best_in_place
+//= require best_in_place.jquery-ui
+//= require jquery.purr
+//= require best_in_place.purr
+
+//= require turbolinks
+//= require ckeditor/init
+
 //= require_tree .

@@ -1,0 +1,1 @@
+json.extract! @profile, :title, :place, :city, :state, :image, :diety, :religion, :type, :created_at, :updated_at

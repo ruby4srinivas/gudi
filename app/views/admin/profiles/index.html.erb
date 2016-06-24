@@ -1,0 +1,44 @@
+<h1>Listing profiles</h1>
+
+<table id="profiles">
+
+  <%unless  @profiles.empty?%>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>District</th>
+        <th>Sub District</th>
+        <th>Village</th>
+        <th>Image</th>
+        <th>Diety</th>
+        <th>Religion</th>
+        <th>Type</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+  <%end%>
+  <tbody>
+  <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.title %></td>
+        <td><%= profile.place.district_name %></td>
+        <td><%= profile.place.s_district %></td>
+        <td><%= profile.place.area_name %></td>
+
+        <td><%= image_tag profile.image.url(:thumb), alt: profile.image.url(:thumb) %></td>
+        <td><%= profile.diety %></td>
+        <td><%= profile.religion %></td>
+        <td><%= profile.temple_type %></td>
+        <td><%= link_to 'Show', [:admin, profile] %></td>
+        <td><%= link_to 'Edit', edit_admin_profile_path(profile) %></td>
+        <td><%= link_to 'Destroy', [:admin, profile], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profile', new_admin_profile_path %>

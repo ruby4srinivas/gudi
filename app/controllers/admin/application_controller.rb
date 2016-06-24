@@ -7,6 +7,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_filter :authenticate_admin
+    rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
     def authenticate_admin
       # TODO Add authentication logic here.
@@ -17,5 +18,10 @@ module Admin
     # def records_per_page
     #   params[:per_page] || 20
     # end
+    private
+
+    def record_not_found
+      redirect_to action: :index
+    end
   end
 end

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @profile.title %>
+
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @profile.place.area_name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @profile.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @profile.state %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @profile.image.url(:large), alt: @profile.image.url(:large) %>
+</p>
+
+<p>
+  <strong>Diety:</strong>
+  <%= @profile.diety %>
+</p>
+
+<p>
+  <strong>Religion:</strong>
+  <%= @profile.religion %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @profile.temple_type %>
+</p>
+
+<p>
+  <strong>About Temple</strong>
+  <%=  @profile.about_temple.html_safe %>
+</p>
+
+<%= link_to 'Back', profiles_path %>

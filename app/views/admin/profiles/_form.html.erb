@@ -1,0 +1,77 @@
+<%= form_for([:admin, @profile],html: { multipart: true, class: "dropzone", id: "upload-dropzone"} ) do |f| %>
+    <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+          <ul>
+            <% @profile.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :state %><br>
+      <%= f.collection_select :state, Place.states,:mdds_stc, :state_name,prompt: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :District %><br>
+      <%= collection_select :places, :district, Place.districts(28),:mdds_dtc, :district_name,prompt: true %>
+      <%#= grouped_collection_select  :profile,  :district, State.order(:state_name), :places, :name, :mdds_dtc, :district_name,prompt: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :Sub_District %><br>
+      <%= collection_select :places, :s_district, Place.sdistricts(532),:mdds_sub, :s_district, prompt: true %>
+      <%#= options_from_collection_for_select(Place.all,'mdds_sub', 's_district') %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :Village %><br>
+      <%= f.collection_select :place_id, Place.villages(4312),:id, :area_name, prompt: true %>
+      <%#= f.select :places_id, options_for_select(Place.all.map{|s|[s.area_name, s.id]}) %>
+    </div>
+
+
+      <!--<div class="dropzone-previews">-->
+        <!--<p class="dz-message">You can drop an image here or click to upload.</p>-->
+        <div class="fallback">
+          <%= f.label :Village %><br>
+          <%= f.file_field :image %>
+
+        <!--</div>-->
+      </div>
+      <div class="field">
+        <%= f.label :diety %><br>
+        <%= f.text_field :diety %>
+      </div>
+      <div class="field">
+        <%= f.label :religion %><br>
+        <%= f.text_field :religion %>
+      </div>
+      <div class="field">
+        <%= f.label :temple_type %><br>
+        <%= f.text_field :temple_type %>
+      </div>
+
+    <div class="field">
+
+      <%= f.label :About_Temple %><br>
+
+
+      <%= f.cktext_area :about_temple %>
+
+    </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+<% end %>
